@@ -1,0 +1,80 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import SlideWrapper from '../../SlideWrapper';
+
+export default function Slide08QuoteSam() {
+  return (
+    <SlideWrapper>
+      <motion.div
+        className="relative flex flex-col gap-8 w-full max-w-4xl"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+      >
+        {/* 装飾的な引用符 */}
+        <motion.div
+          className="text-[120px] md:text-[160px] leading-[0.7] font-serif select-none"
+          style={{
+            background: 'linear-gradient(135deg, #c8a8ff 0%, #4FACF7 50%, #88bbff 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+        >
+          &ldquo;
+        </motion.div>
+
+        {/* 引用本文（日本語） */}
+        <motion.p
+          className="text-3xl md:text-4xl font-light text-white leading-tight tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          AIは我々がかつて見たこともないほど、
+          <br />
+          経済的なエンパワーメントと人々に富をもたらす
+          <br />
+          <span className="bg-gradient-to-r from-[#c8a8ff] to-[#4FACF7] bg-clip-text text-transparent font-normal">
+            最大の原動力になるだろう
+          </span>
+        </motion.p>
+
+        {/* 英語原文 */}
+        <motion.p
+          className="text-base md:text-lg text-white/40 italic font-light leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+        >
+          &ldquo;AI will be the greatest force for economic empowerment
+          <br />
+          and a lot of people getting rich we have ever seen.&rdquo;
+        </motion.p>
+
+        {/* 装飾線 */}
+        <motion.div
+          className="w-16 h-px bg-gradient-to-r from-[#c8a8ff] via-[#4FACF7] to-[#88bbff]"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.6, delay: 0.7, ease: 'easeOut' }}
+          style={{ transformOrigin: 'left' }}
+        />
+
+        {/* 著者 */}
+        <motion.div
+          className="flex flex-col gap-1"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <p className="text-base md:text-lg text-white font-medium">サム・アルトマン</p>
+          <p className="text-xs md:text-sm text-white/40 tracking-wider">CEO · OpenAI</p>
+        </motion.div>
+      </motion.div>
+    </SlideWrapper>
+  );
+}

@@ -65,7 +65,7 @@ function LimitationRow({
 
   return (
     <motion.div
-      className="flex items-start gap-2.5 px-2 py-1.5 md:py-2 rounded-lg border min-w-0 transition-colors"
+      className="flex items-start gap-2.5 px-2 py-0.5 md:py-1 rounded-lg border min-w-0 transition-colors"
       style={
         highlighted
           ? {
@@ -85,16 +85,16 @@ function LimitationRow({
           color: badgeAccent,
           borderColor: `${badgeAccent}${highlighted ? '88' : '44'}`,
           background: `${badgeAccent}${highlighted ? '22' : '10'}`,
-          fontSize: 'clamp(11px, 0.95vw, 14px)',
-          minWidth: 'clamp(60px, 5.8vw, 78px)',
+          fontSize: 'clamp(10px, 0.85vw, 13px)',
+          minWidth: 'clamp(56px, 5.2vw, 70px)',
           boxShadow: highlighted ? `0 0 12px ${HIGHLIGHT_ACCENT}33` : undefined,
         }}
       >
         {item.article}
       </span>
       <span
-        className={`leading-relaxed min-w-0 ${highlighted ? 'text-white font-semibold' : 'text-white/85'}`}
-        style={{ fontSize: 'clamp(13px, 1.02vw, 16px)' }}
+        className={`leading-snug min-w-0 ${highlighted ? 'text-white font-semibold' : 'text-white/85'}`}
+        style={{ fontSize: 'clamp(11.5px, 0.92vw, 14.5px)' }}
       >
         {item.title}
       </span>
@@ -110,7 +110,7 @@ export default function Slide62CopyrightLimitations() {
   return (
     <SlideWrapper>
       <motion.div
-        className="flex flex-col gap-3 md:gap-4 w-full max-w-6xl h-full justify-center py-5 md:py-6"
+        className="flex flex-col gap-2 md:gap-2.5 w-full max-w-6xl h-full justify-center py-4 md:py-5"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -118,13 +118,13 @@ export default function Slide62CopyrightLimitations() {
         <div className="flex flex-col gap-1 shrink-0">
           <span
             className="tracking-[0.32em] uppercase text-white/40"
-            style={{ fontSize: 'clamp(11px, 1.1vw, 15px)' }}
+            style={{ fontSize: 'clamp(10px, 0.9vw, 12.5px)' }}
           >
             4-6 · 著作物 · 権利制限
           </span>
           <h2
             className="font-bold tracking-tight text-white leading-tight"
-            style={{ fontSize: 'clamp(24px, 2.6vw, 40px)' }}
+            style={{ fontSize: 'clamp(20px, 2.2vw, 32px)' }}
           >
             著作権法における
             <span
@@ -138,7 +138,7 @@ export default function Slide62CopyrightLimitations() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-6 gap-y-0.5 md:gap-y-1 px-1 md:px-2 py-2 md:py-3 rounded-xl border border-white/10 bg-white/[0.02]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-6 gap-y-0 px-1 md:px-2 py-1.5 md:py-2 rounded-xl border border-white/10 bg-white/[0.02]">
           <div className="flex flex-col min-w-0">
             {leftCol.map((item, i) => (
               <LimitationRow key={item.article} item={item} index={i} />

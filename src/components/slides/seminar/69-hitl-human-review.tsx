@@ -173,8 +173,8 @@ export default function Slide69HitlHumanReview() {
           </h2>
           <div className="flex flex-wrap gap-2 pt-1">
             <RelatedRuleLink
-              targetId="22-risk-practice"
-              label="関連: RBA実践例（名刺管理MCP）"
+              targetId="21-risk-examples"
+              label="関連: リスクベースアプローチ具体例"
               accent="#ffaacc"
             />
           </div>

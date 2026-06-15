@@ -6,9 +6,9 @@ import SlideWrapper from '../../SlideWrapper';
 const CHAPTER = {
   number: '01',
   label: 'Chapter',
-  title: 'ホットトピックと生成AI活用プラン',
+  title: '生成AI活用企業の動き',
   subtitle:
-    'ホットトピックを概観したうえで、MIT 論文と弁護士事務所の実例から、活用プランの組み立て方を見ていきます。',
+    '社内生成AI利用規程を作るにあたり、まずは「生成AIをビジネスの現場でどう使っていくのか」のイメージを、企業や経営者の動き・MIT論文・エージェント／MCPの活用から描いていきます。',
 };
 
 export default function Slide06Chapter01() {

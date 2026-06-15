@@ -36,53 +36,6 @@ const EXAMPLE_CONCLUSIONS = [
 const ARTICLE_SUBTITLE =
   '（電子計算機による情報処理及びその結果の提供に付随する軽微利用等）';
 
-const ARTICLE_ITEMS = [
-  '電子計算機を用いて、検索により求める情報（以下「検索情報」／略）が記録された著作物の題号又は著作者名、送信可能化された検索情報に係る送信元識別符号（略）その他の検索情報の特定又は所在に関する情報を検索し、及びその結果を提供すること。',
-  '電子計算機による情報解析を行い、及びその結果を提供すること。',
-  '前2号に掲げるもののほか、電子計算機による情報処理により、新たな知見又は情報を創出し、及びその結果を提供する行為であつて、（略）政令で定めるもの',
-] as const;
-
-function ArticleLeadParagraph() {
-  const hl = (text: string) => (
-    <span
-      style={{
-        color: HIGHLIGHT_ACCENT,
-        fontWeight: 700,
-        background: `${HIGHLIGHT_ACCENT}18`,
-        boxDecorationBreak: 'clone',
-        WebkitBoxDecorationBreak: 'clone',
-      }}
-    >
-      {text}
-    </span>
-  );
-
-  return (
-    <p
-      className="text-white/85 leading-relaxed"
-      style={{ fontSize: 'clamp(13px, 1.15vw, 17px)' }}
-    >
-      電子計算機を用いた情報処理により新たな知見又は情報を創出することによつて著作物の利用の促進に資する
-      {hl('次の各号に掲げる行為を行う者')}
-      （政令で定める基準に従つて行う者に限る／略）
-      {hl('は、公衆への提供等')}
-      （略）
-      {hl('が行われた著作物')}
-      （以下「公衆提供等著作物」／略）
-      {hl('について、')}
-      当該各号に掲げる行為の目的上必要と認められる限度において、当該行為に付随して、いずれの方法によるかを問わず、
-      {hl('利用')}
-      （当該公衆提供等著作物のうちその利用に供される部分の占める割合、その利用に供される部分の量、その利用に供される際の表示の精度その他の要素に照らし軽微なものに限る。以下この条において「軽微利用」という。）
-      {hl('を行うことができる。')}
-      {hl('ただし、')}
-      当該公衆提供等著作物に係る公衆への提供等が著作権を侵害するものであることを知りながら当該軽微利用を行う場合その他、
-      {hl(
-        '当該公衆提供等著作物の種類及び用途並びに当該軽微利用の態様に照らし著作権者の利益を不当に害することとなる場合は、この限りでない。'
-      )}
-    </p>
-  );
-}
-
 function DocumentIcon({
   color,
   width = 44,
@@ -133,28 +86,40 @@ function DocumentIcon({
 
 function MinorUseDiagram() {
   return (
-    <div
-      className="shrink-0 rounded-lg border px-2.5 py-2.5"
+    <motion.div
+      className="flex flex-col gap-2 px-3.5 py-3 md:px-4 md:py-4 rounded-xl border h-full justify-center"
       style={{
-        borderColor: 'rgba(255,255,255,0.12)',
-        background: 'rgba(0,0,0,0.18)',
+        borderColor: `${SOURCE_ACCENT}44`,
+        background: `linear-gradient(160deg, ${SOURCE_ACCENT}0c 0%, rgba(0,0,0,0.18) 100%)`,
       }}
+      initial={{ opacity: 0, x: 14 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
     >
       <span
-        className="font-bold text-white block mb-2"
-        style={{ fontSize: 'clamp(13px, 1.1vw, 16px)' }}
+        className="font-bold text-white block"
+        style={{ fontSize: 'clamp(14px, 1.2vw, 18px)' }}
       >
         【出力内容】軽微利用の3要素
       </span>
+      <p
+        className="text-white/45 leading-snug"
+        style={{ fontSize: 'clamp(10px, 0.85vw, 12px)' }}
+      >
+        ①〜③を総合して「軽微」といえるかを判断する
+      </p>
 
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 min-h-[7rem] md:min-h-[7.75rem]">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 md:gap-3 min-h-[9rem] md:min-h-[11rem]">
         {/* 左: 出力 */}
-        <div
-          className="relative flex flex-col items-center justify-end gap-1 rounded-md border px-2 py-2.5 h-full min-h-[6.5rem]"
+        <motion.div
+          className="relative flex flex-col items-center justify-end gap-1.5 rounded-md border px-2 py-3 h-full min-h-[8rem]"
           style={{
             borderColor: `${LAW_ACCENT}66`,
             background: `${LAW_ACCENT}0a`,
           }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.45 }}
         >
           <span
             className="absolute top-1.5 left-2 font-bold leading-none"
@@ -167,48 +132,64 @@ function MinorUseDiagram() {
             style={{ borderColor: `${LAW_ACCENT}28` }}
             aria-hidden
           />
-          <DocumentIcon color={LAW_ACCENT} width={34} height={40} lines={3} />
-          <span
+          <DocumentIcon color={LAW_ACCENT} width={40} height={48} lines={3} />
+          <motion.span
             className="font-bold text-center leading-snug"
-            style={{ color: DIAGRAM_LABEL, fontSize: 'clamp(10px, 0.88vw, 12px)' }}
+            style={{ color: DIAGRAM_LABEL, fontSize: 'clamp(10px, 0.9vw, 12.5px)' }}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.85 }}
           >
             ②全体に対する割合
-          </span>
-        </div>
+          </motion.span>
+        </motion.div>
 
         {/* 中央: ③ + 矢印 */}
-        <div className="flex flex-col items-center gap-1 px-1 shrink-0 self-center">
-          <span
-            className="font-bold text-center leading-snug max-w-[5.5rem]"
-            style={{ color: DIAGRAM_LABEL, fontSize: 'clamp(10px, 0.88vw, 12px)' }}
+        <div className="flex flex-col items-center gap-1.5 px-1 shrink-0 self-center">
+          <motion.span
+            className="font-bold text-center leading-snug max-w-[6rem]"
+            style={{ color: DIAGRAM_LABEL, fontSize: 'clamp(10px, 0.9vw, 12.5px)' }}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.95 }}
           >
             ③出力時の
             <br />
             変化の度合い
-          </span>
-          <svg width="56" height="22" viewBox="0 0 56 22" fill="none" aria-hidden>
-            <path
+          </motion.span>
+          <svg width="64" height="24" viewBox="0 0 56 22" fill="none" aria-hidden>
+            <motion.path
               d="M54 11H12M12 11L20 5M12 11L20 17"
               stroke={LAW_ACCENT}
               strokeWidth="2.25"
               strokeLinecap="round"
               strokeLinejoin="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
             />
-            <path
+            <motion.path
               d="M48 7C40 15 28 7 20 11"
               stroke={`${LAW_ACCENT}55`}
               strokeWidth="1.5"
               strokeDasharray="2.5 2.5"
               strokeLinecap="round"
+              animate={{ opacity: [0.3, 0.9, 0.3] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
             />
           </svg>
         </div>
 
         {/* 右: 著作物 */}
-        <div className="flex flex-col items-center justify-end gap-1 py-1.5">
+        <motion.div
+          className="flex flex-col items-center justify-end gap-1.5 py-1.5"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.55 }}
+        >
           <div className="relative">
-            <DocumentIcon color={SOURCE_ACCENT} width={42} height={50} lines={4} />
-            <div
+            <DocumentIcon color={SOURCE_ACCENT} width={48} height={58} lines={4} />
+            <motion.div
               className="absolute left-1 right-1 bottom-1.5 rounded-sm border-2"
               style={{
                 height: '28%',
@@ -216,19 +197,24 @@ function MinorUseDiagram() {
                 background: `${SOURCE_ACCENT}33`,
               }}
               aria-hidden
+              animate={{ opacity: [0.55, 1, 0.55], boxShadow: [`0 0 0 ${SOURCE_ACCENT}00`, `0 0 12px ${SOURCE_ACCENT}aa`, `0 0 0 ${SOURCE_ACCENT}00`] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
             />
           </div>
-          <span
+          <motion.span
             className="font-bold text-center leading-snug"
-            style={{ color: DIAGRAM_LABEL, fontSize: 'clamp(10px, 0.88vw, 12px)' }}
+            style={{ color: DIAGRAM_LABEL, fontSize: 'clamp(10px, 0.9vw, 12.5px)' }}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.75 }}
           >
             ①どの程度
             <br />
             使われたか
-          </span>
-        </div>
+          </motion.span>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -322,10 +308,6 @@ function ApplicationExampleColumn() {
           ))}
         </ul>
       </div>
-
-      <div className="h-px bg-white/8 shrink-0" />
-
-      <MinorUseDiagram />
     </motion.div>
   );
 }
@@ -354,57 +336,12 @@ export default function Slide64CopyrightArticle475() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-3.5 items-stretch">
-          {/* 左: 条文 */}
-          <motion.div
-            className="flex flex-col gap-2 px-3 py-2.5 md:px-3.5 md:py-3 rounded-xl border"
-            style={{
-              borderColor: `${HIGHLIGHT_ACCENT}55`,
-              background: `linear-gradient(160deg, ${HIGHLIGHT_ACCENT}0c 0%, rgba(255,255,255,0.02) 100%)`,
-            }}
-            initial={{ opacity: 0, x: -14 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="flex items-baseline gap-2 flex-wrap">
-              <span
-                className="font-bold font-mono"
-                style={{ color: HIGHLIGHT_ACCENT, fontSize: 'clamp(15px, 1.3vw, 19px)' }}
-              >
-                第47条の5
-              </span>
-              <span
-                className="text-white/40"
-                style={{ fontSize: 'clamp(11px, 1vw, 14px)' }}
-              >
-                著作権法
-              </span>
-            </div>
-
-            <ArticleLeadParagraph />
-
-            <ol className="flex flex-col gap-2 list-none counter-reset-none">
-              {ARTICLE_ITEMS.map((item, i) => (
-                <li key={item} className="flex gap-2">
-                  <span
-                    className="shrink-0 font-mono font-semibold tabular-nums"
-                    style={{ color: LAW_ACCENT, fontSize: 'clamp(13px, 1.15vw, 17px)' }}
-                  >
-                    {i + 1}
-                  </span>
-                  <span
-                    className="text-white/80 leading-relaxed min-w-0"
-                    style={{ fontSize: 'clamp(13px, 1.15vw, 17px)' }}
-                  >
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </motion.div>
-
-          {/* 右: 適用例 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 items-stretch">
+          {/* 左: 適用例 */}
           <ApplicationExampleColumn />
+
+          {/* 右: 軽微利用の3要素（図解） */}
+          <MinorUseDiagram />
         </div>
       </motion.div>
     </SlideWrapper>

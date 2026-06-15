@@ -58,7 +58,7 @@ export default function Slide87CreativeLegalRights() {
           </p>
           <div className="flex flex-wrap gap-2 pt-1.5">
             <RelatedRuleLink
-              targetId="51-trade-secret-act"
+              targetId="50-trade-secret-act"
               label="関連: 4-3 営業秘密・不正競争防止法"
               accent={CREATIVE_ACCENT}
             />

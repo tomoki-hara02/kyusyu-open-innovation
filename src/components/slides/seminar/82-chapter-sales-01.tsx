@@ -6,7 +6,7 @@ import SlideWrapper from '../../SlideWrapper';
 /**
  * p82: Chapter 03 内 — 商談編 01（中間見出し / セクション扉）
  *
- * ベース: `40-section-03-tool.tsx`（Chapter 02 の Section 扉と同型）
+ * ベース: `39-section-03-tool.tsx`（Chapter 02 の Section 扉と同型）
  */
 
 const SECTION_ACCENT = '#f7c46c';

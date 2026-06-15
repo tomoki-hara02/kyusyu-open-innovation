@@ -6,9 +6,9 @@ import SlideWrapper from '../../SlideWrapper';
 const points = [
   {
     number: '01',
-    title: '近時のホットトピックと生成AI活用プラン',
+    title: '生成AI活用企業の動き',
     description:
-      '生成AI周辺のホットトピック（Agent/MCP・改正個情法・声優論点）を概観し、MIT 論文と弁護士事務所の実例から、自社の生成AI活用プランを構想します。',
+      '生成AIをビジネスの現場でどう使うか。企業の動きやエージェント／MCP の活用から、自社の活用イメージを描きます。',
     gradient: 'from-[#7B5EA7] to-[#4F8EF7]',
     border: 'border-[#7B5EA7]/30',
   },

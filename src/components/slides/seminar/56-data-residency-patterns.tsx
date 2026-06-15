@@ -6,8 +6,7 @@ import SlideWrapper from '../../SlideWrapper';
 /**
  * p56: 4-4 個人情報 — データレジデンシーパターンの概要
  *
- * 左: オンプレ / SaaS（国内・海外ホスティング）のデータフロー図
- * 右: 個人情報保護法における個人データ規制
+ * オンプレ / SaaS（国内・海外ホスティング）のデータフロー図をメインに配置
  */
 
 const CHAPTER_ACCENT = '#9ee0a8';
@@ -41,40 +40,6 @@ const LAYOUT = {
   /** 矢印ラベル — 内側配置用オフセット（→=下、←=上） */
   arrowLabel: { offset: 14 },
 } as const;
-
-const REGULATIONS = [
-  {
-    num: '1',
-    title: 'データ内容の正確性の確保等',
-    items: [
-      { text: '正確性の確保（22条前段）' },
-      { text: '不要となったデータの消去（22条後段）' },
-    ],
-  },
-  {
-    num: '2',
-    title: '安全管理措置関係',
-    items: [
-      { text: '安全管理措置（23条）' },
-      { text: '従業者の監督（24条）' },
-      { text: '委託先の監督（25条）' },
-      { text: '漏洩等の報告等（26条）' },
-    ],
-  },
-  {
-    num: '3',
-    title: '第三者提供関係',
-    items: [
-      { text: '第三者提供の制限（27条）' },
-      {
-        text: '外国にある第三者への提供の制限（28条）',
-        highlight: true,
-      },
-      { text: '第三者提供に係る記録の作成等（29条）' },
-      { text: '第三者提供を受ける際の確認等（30条）' },
-    ],
-  },
-] as const;
 
 function FlowArrow({
   x1,
@@ -330,7 +295,7 @@ function ResidencyDiagram() {
     <div className="flex w-full h-full min-h-0 items-center justify-center">
       <div
         className="relative w-full rounded-xl border border-white/10 bg-black/20 overflow-hidden"
-        style={{ aspectRatio: `${VW} / ${VH}`, maxHeight: 'min(62vh, 450px)' }}
+        style={{ aspectRatio: `${VW} / ${VH}`, maxHeight: 'min(70vh, 520px)' }}
       >
       <svg
         viewBox={`0 0 ${VW} ${VH}`}
@@ -431,79 +396,6 @@ function ResidencyDiagram() {
   );
 }
 
-function RegulationsColumn() {
-  return (
-    <motion.div
-      className="flex w-full h-full min-h-0 items-center justify-center"
-      initial={{ opacity: 0, x: 12 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-    >
-      <div className="w-full rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
-        <p
-          className="font-bold text-white border-b border-white/10 px-3 py-2.5 leading-snug"
-          style={{
-            fontSize: 'clamp(14px, 1.12vw, 17px)',
-            background: `${LAW_ACCENT}08`,
-          }}
-        >
-          【個人情報保護法における個人データ規制】
-        </p>
-
-        {REGULATIONS.map((section, si) => (
-          <motion.div
-            key={section.num}
-            className="border-b border-white/[0.06] last:border-b-0 bg-black/10"
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.3 + si * 0.06 }}
-          >
-            <div className="flex items-center gap-2 px-3 pt-2.5 pb-1">
-              <span
-                className="shrink-0 flex items-center justify-center rounded font-bold"
-                style={{
-                  width: 22,
-                  height: 22,
-                  fontSize: 12,
-                  background: `${LAW_ACCENT}30`,
-                  color: LAW_ACCENT,
-                }}
-              >
-                {section.num}
-              </span>
-              <p
-                className="font-bold text-white/92 leading-snug"
-                style={{ fontSize: 'clamp(13px, 1.05vw, 16px)' }}
-              >
-                {section.title}
-              </p>
-            </div>
-
-            <ul className="flex flex-col gap-1 px-3 pb-2.5 pl-9 leading-snug">
-              {section.items.map((item) => {
-                const highlighted = 'highlight' in item && item.highlight;
-                return (
-                <li
-                  key={item.text}
-                  style={{
-                    fontSize: 'clamp(13px, 0.98vw, 15px)',
-                    color: highlighted ? OVERSEAS_ACCENT : 'rgba(255,255,255,0.62)',
-                    fontWeight: highlighted ? 700 : 400,
-                    lineHeight: 1.45,
-                  }}
-                >
-                  {item.text}
-                </li>
-                );
-              })}
-            </ul>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  );
-}
-
 export default function Slide56DataResidencyPatterns() {
   return (
     <SlideWrapper>
@@ -536,9 +428,10 @@ export default function Slide56DataResidencyPatterns() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 items-center">
-          <ResidencyDiagram />
-          <RegulationsColumn />
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-3xl">
+            <ResidencyDiagram />
+          </div>
         </div>
       </motion.div>
     </SlideWrapper>
